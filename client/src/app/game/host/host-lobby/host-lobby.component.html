@@ -1,0 +1,22 @@
+<div>
+  <p>Game Lobby: {{gameId}}</p>
+
+  <h1 *ngIf="players.length <=0; else playersTitle">Waiting for players to join...</h1>
+  <ng-template #playersTitle>
+    <h1>Players:</h1>
+  </ng-template>
+  <mat-list role="list">
+    <mat-list-item role="listitem" *ngFor="let player of players">
+      {{player.name}}
+    </mat-list-item>
+  </mat-list>
+
+  <p>Number of players: {{players.length}}</p>
+
+  <button *ngIf="players.length >= 1"
+          mat-raised-button color="primary"
+          (click)="startGame.emit()"
+          type="button">
+    Start
+  </button>
+</div>

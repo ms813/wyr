@@ -1,0 +1,41 @@
+<div *ngIf="isCreator">
+  <p>Game created!</p>
+  <h1>
+    <small>Game ID:</small>
+    {{gameId}}
+  </h1>
+
+  <p>Tell your friends to go to '/join', and enter room id {{gameId}}</p>
+</div>
+
+<div>
+  <form class="form">
+    <mat-form-field class="full-width">
+      <input name="roomCode" [(ngModel)]="gameId" matInput placeholder="Room Code">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input
+        matInput
+        name="playerName"
+        [(ngModel)]="playerName"
+        placeholder="Player Name"
+        [formControl]="playerNameFormControl"
+        [errorStateMatcher]="matcher"
+      />
+      <mat-error *ngIf="playerNameFormControl.hasError('required')">Player name is <strong>required</strong></mat-error>
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      color="primary"
+      type="button"
+      (click)="onJoinClick()">
+      Join
+    </button>
+  </form>
+
+  <div *ngIf="error">{{error}}</div>
+</div>
+
+

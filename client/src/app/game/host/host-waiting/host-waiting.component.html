@@ -1,0 +1,17 @@
+
+<h1>{{title}}</h1>
+<mat-list role="list">
+  <mat-list-item role="listitem" *ngFor="let player of players">
+    {{player.name}}
+    <div *ngIf="playersResponded.includes(player.name); else notAnswered">
+      <i class="material-icons">check</i>
+    </div>
+    <ng-template #notAnswered>
+      <div><i class="material-icons">close</i></div>
+    </ng-template>
+  </mat-list-item>
+
+  <div *ngIf="playersResponded.length === players.length">
+    <button mat-raised-button color="primary" type="button" (click)="allResponsesSubmitted.emit()">Next...</button>
+  </div>
+</mat-list>

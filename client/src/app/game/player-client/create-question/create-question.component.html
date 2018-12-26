@@ -1,0 +1,21 @@
+
+<div *ngIf="submitted; else createQuestion">
+  Thanks for submitting your question!
+</div>
+
+<ng-template #createQuestion>
+  <h1>Create your question...</h1>
+  <h2>Would you rather:</h2>
+
+  <form class="form">
+    <mat-form-field class="full-width">
+      <input name="optionA" [(ngModel)]="optionAText" matInput placeholder="Option A">
+    </mat-form-field>
+    <p>or...</p>
+    <mat-form-field class="full-width">
+      <input name="optionB" [(ngModel)]="optionBText" matInput placeholder="Option B">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="button" (click)="submitQuestion()">Submit</button>
+  </form>
+</ng-template>

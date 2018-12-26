@@ -1,0 +1,13 @@
+<div>
+  <p>Welcome {{playerName}}!</p>
+  <p>Game Lobby {{gameId}}</p>
+
+  <h1>Players:</h1>
+  <mat-list role="list">
+    <mat-list-item role="listitem" *ngFor="let player of players">
+      {{player.name}}
+    </mat-list-item>
+  </mat-list>
+
+  <p>Number of players: {{players.length}}</p>
+</div>

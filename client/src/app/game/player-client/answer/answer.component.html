@@ -1,0 +1,22 @@
+<div *ngFor="let question of questions;index as i"
+     [attr.data-index]="i">
+  <h1>Would you rather...</h1>
+  <mat-button-toggle-group
+    [name]="'answer' + i"
+    #group="matButtonToggleGroup"
+    [(value)]="answers[i]"
+  >
+
+    <mat-button-toggle value="A">
+      {{question.optionA.text}}
+    </mat-button-toggle>
+    <div class="or">or</div>
+    <mat-button-toggle value="B">
+      {{question.optionB.text}}
+    </mat-button-toggle>
+  </mat-button-toggle-group>
+  <!--<div>Selected value: {{answers[i]}}</div>-->
+  <mat-divider *ngIf="i < questions.length - 1" [inset]="true"></mat-divider>
+</div>
+
+<button mat-raised-button color="primary" type="button" (click)="onSubmitClick()">Submit</button>

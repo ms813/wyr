@@ -1,0 +1,8 @@
+mat-button-toggle-group{
+  border: none;
+  display:grid;
+}
+
+.or{
+  margin: 10px auto;
+}

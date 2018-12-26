@@ -1,0 +1,39 @@
+<div [ngSwitch]="state">
+  <wyr-create-game
+    *ngSwitchCase="hostState.CREATE_GAME"
+    (createGame)="onGameCreated($event)"
+  ></wyr-create-game>
+
+  <wyr-host-lobby
+    *ngSwitchCase="hostState.HOST_LOBBY"
+    (startGame)="onGameStarted()"
+    [gameId]="gameId"
+    [players]="players"
+  ></wyr-host-lobby>
+
+  <wyr-host-waiting
+    *ngSwitchCase="hostState.WAITING_FOR_QUESTIONS"
+    [title]="'Write your questions!'"
+    [players]="players"
+    [responseSubmitted]="questionSubmitted.asObservable()"
+    (allResponsesSubmitted)="onAllQuestionsSubmitted()"
+  ></wyr-host-waiting>
+
+  <wyr-host-waiting
+    *ngSwitchCase="hostState.WAITING_FOR_ANSWERS"
+    [title]="'Write your answers!'"
+    [players]="players"
+    [responseSubmitted]="answersSubmitted.asObservable()"
+    (allResponsesSubmitted)="onAllAnswersSubmitted()"
+  >
+  </wyr-host-waiting>
+
+  <wyr-host-reveal
+    *ngSwitchCase="hostState.ALL_ANSWERS_RECEIVED"
+    [title]="'The answers are in...'"
+    [players]="players"
+    [completedQuestions]="completedQuestions"
+  >
+  </wyr-host-reveal>
+
+</div>

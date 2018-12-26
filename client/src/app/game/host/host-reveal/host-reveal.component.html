@@ -1,0 +1,30 @@
+<h1>{{currentQuestion.author.name || currentQuestion.author}} asked: Would you rather...</h1>
+<div fxLayout="row">
+  <div class="center-text" fxFlex="0 1 40%">
+    {{currentQuestion.optionA.text}}
+  </div>
+  <div class="center-text" fxFlex="0 1 20%">or...</div>
+  <div class="center-text" fxFlex="0 1 40%">
+    {{currentQuestion.optionB.text}}
+  </div>
+</div>
+<hr>
+<div *ngFor="let player of players; let i = index" [attr.data-index]="i">
+  <div fxLayout="row">
+    <div class="center-text" fxFlex="0 1 40%">
+      {{getPlayerVote(player) === 'A' ? player.name : ''}}
+    </div>
+    <div class="center-text" fxFlex="0 1 20%">|</div>
+    <div class="center-text" fxFlex="0 1 40%">
+      {{getPlayerVote(player) === 'B' ? player.name : ''}}
+    </div>
+  </div>
+</div>
+
+
+<button
+  mat-raised-button color="primary"
+  (click)="revealNext()"
+  type="button">
+  {{currentQuestionIndex < completedQuestions.length - 1 ? 'Next' : 'Finish Game'}}
+</button>

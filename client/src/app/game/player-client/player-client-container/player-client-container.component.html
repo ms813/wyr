@@ -1,0 +1,32 @@
+<div [ngSwitch]="state">
+  <wyr-join-game
+    *ngSwitchCase="playerState.JOIN"
+    (join)="joinGame($event)"></wyr-join-game>
+
+  <wyr-player-lobby
+    *ngSwitchCase="playerState.LOBBY"
+    [players]="players"
+    [playerName]="playerName"
+    [gameId]="gameId"></wyr-player-lobby>
+
+  <wyr-create-question
+    *ngSwitchCase="playerState.WRITING_QUESTION"
+    [playerName]="playerName"
+    (questionSubmitted)="onQuestionSubmitted($event)"
+  ></wyr-create-question>
+
+  <div *ngSwitchCase="playerState.WAITING_FOR_QUESTIONS">
+    Waiting for others to finish writing their question
+  </div>
+
+  <wyr-answer
+    *ngSwitchCase="playerState.WRITING_ANSWERS"
+    [playerName]="playerName"
+    [questions]="questions"
+    (submitAnswers)="onAnswered($event)"
+  ></wyr-answer>
+
+  <div *ngSwitchCase="playerState.WAITING_FOR_ANSWERS">
+    Waiting for others to finish answering the questions
+  </div>
+</div>
