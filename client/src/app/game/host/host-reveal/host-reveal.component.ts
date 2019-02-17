@@ -34,7 +34,7 @@ export class HostRevealComponent implements OnInit {
   @Output()
   endGame = new EventEmitter<any>();
 
-  currentQuestionIndex: number = 0;
+  private currentQuestionIndex: number = 0;
   private currentQuestion: Question;
 
   constructor(private titleService: Title) {}
