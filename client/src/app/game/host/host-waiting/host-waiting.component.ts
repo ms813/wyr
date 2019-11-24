@@ -9,12 +9,12 @@ import { Observable } from 'rxjs';
 })
 export class HostWaitingComponent implements OnInit {
   @Input()
-  private players: Player[] = [];
+  players: Player[] = [];
 
   @Input()
-  private title: string = 'Remember to set a title';
+  title: string = 'Remember to set a title';
 
-  private playersResponded: string[] = [];
+  playersResponded: string[] = [];
 
   @Input()
   responseSubmitted: Observable<string>;

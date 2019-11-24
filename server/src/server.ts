@@ -1,8 +1,7 @@
-import { createServer, Server } from 'http';
+import {createServer, Server} from 'http';
 import * as express from 'express';
 import * as SocketIo from 'socket.io';
 import Game from './model/game.model';
-import { SocketService } from '../../client/src/app/game/services/socket.service';
 import * as path from 'path';
 
 export default class WouldYouRatherServer {

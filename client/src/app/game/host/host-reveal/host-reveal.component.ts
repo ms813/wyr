@@ -40,7 +40,7 @@ export class HostRevealComponent implements OnInit {
   constructor(private titleService: Title) {}
 
   revealNext(): void {
-    if (this.currentQuestionIndex >= this.completedQuestions - 1) {
+    if (this.currentQuestionIndex >= this.completedQuestions.length - 1) {
       this.endGame.emit();
       console.log('All answers revealed');
     }
